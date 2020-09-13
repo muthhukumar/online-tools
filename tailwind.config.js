@@ -3,8 +3,7 @@ module.exports = {
         purgeLayersByDefault: true,
     },
     purge: {
-        enabled: true,
-        layeres: ['utilities'],
+        enable: true,
         content: [
             './pages/**/*.js',
             './components/**/*.js',

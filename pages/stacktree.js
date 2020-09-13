@@ -26,7 +26,10 @@ const StackTree = () => {
     }, []);
 
     return (
-        <Page>
+        <Page
+            title="Stacktree"
+            description="A simple todo app using firebase realtime firestore database and Nextjs framework"
+        >
             <StackTreePage data={data} />
         </Page>
     );
