@@ -5,18 +5,6 @@ import DisplayDate from './displayDate';
 import HarvestInput from './harvestInput';
 import Message from './message';
 
-/*
-            db.collection('warehouse')
-                .get()
-                .then(snapshot => {
-                    const snap = snapshot.docs.map(doc => ({
-                        id: doc.id,
-                        crop: doc.data().crop,
-                        timestamp: doc.data().timestamp,
-                    }));
-                    console.log(snap[0].timestamp.seconds);
-                });
-*/
 const Harvester = () => {
     // harvesting the crop
     const [crop, setCrop] = useState('');
