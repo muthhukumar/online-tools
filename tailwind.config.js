@@ -3,7 +3,6 @@ module.exports = {
         purgeLayersByDefault: true,
     },
     purge: {
-        enable: true,
         content: [
             './pages/**/*.js',
             './components/**/*.js',
