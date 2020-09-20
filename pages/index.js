@@ -1,10 +1,12 @@
-import Harvester from '../components/harvester/index';
 import Page from '../components/page/index';
+import HomeContent from '../components/home/index';
 
-export default function Home() {
+const Home = () => {
     return (
-        <Page title="Harvester" description="Task harvester input page">
-            <Harvester />
+        <Page title="Home">
+            <HomeContent />
         </Page>
     );
-}
+};
+
+export default Home;

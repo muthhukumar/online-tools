@@ -9,6 +9,7 @@ const StackTree = ({ data }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const db = firebase.firestore();
 
     const popupProps = {
         title,
@@ -22,7 +23,6 @@ const StackTree = ({ data }) => {
         if (title === '' || description === '') return;
         setIsPopupOpen(false);
         try {
-            const db = firebase.firestore();
             db.collection('stack').add({
                 title,
                 description,
@@ -38,7 +38,6 @@ const StackTree = ({ data }) => {
 
     const markAsCompleteHandler = id => {
         try {
-            const db = firebase.firestore();
             const data = db.collection('stack').doc(id);
             data.update({ completed: 'completed' })
                 .then(() => {})
@@ -57,9 +56,9 @@ const StackTree = ({ data }) => {
     };
 
     return (
-        <div className="pt-2 min-h-screen bg-gray-100">
+        <div className="pt-2 min-h-screen sm:w-full md:w-11/12 mx-auto bg-gray-100">
             <Header data={data} openPopup={() => setIsPopupOpen(true)} />
-            <div className="w-11/12 py-4 md:w-9/12 mx-auto">
+            <div className="sm:w-full md:w-11/12 py-4  mx-auto">
                 <div className="text-gray-700">Due Today</div>
                 {data.length === 0 ? (
                     <Trace description="None" disabled />

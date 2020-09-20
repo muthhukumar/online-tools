@@ -34,7 +34,7 @@ const Harvester = () => {
             const db = firebase.firestore();
             db.collection('warehouse').add({
                 crop,
-                timestamp: new Date(),
+                timestamp: new Date().toString(),
             });
             setCrop('');
             setMessage(state => ({

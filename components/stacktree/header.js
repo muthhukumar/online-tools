@@ -11,13 +11,13 @@ const Header = ({ openPopup, data }) => {
     };
 
     return (
-        <div className="py-4 bg-teal-400 rounded-lg overflow-hidden">
-            <QuestCard {...questDataProps} />
-            <div className="w-10/12 mx-auto flex justify-between items-center">
-                <div className=" font-bold text-white text-3xl py-2">Stack</div>
+        <div className="py-4 rounded-lg overflow-hidden">
+            <div className="w-full mx-auto flex justify-around items-center">
+                <QuestCard {...questDataProps} />
                 <button
+                    type="submit"
                     onClick={openPopup}
-                    className="w-16 text-gray-700 font-bold uppercase focus:outline-none bg-white py-2 rounded-lg"
+                    className="w-24 text-gray-700 font-bold uppercase focus:outline-none bg-white py-8 shadow-lg rounded-lg"
                 >
                     add
                 </button>
