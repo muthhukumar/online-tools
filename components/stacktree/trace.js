@@ -17,7 +17,7 @@ const Trace = ({
     return (
         <div
             className={`border-l-4 ${
-                Colors[Math.floor(Math.random() * 10)]
+                Colors[index % 10]
             } my-3 px-2 bg-white w-full rounded rounded-r-lg flex-col items-start`}
         >
             {!disabled && (
