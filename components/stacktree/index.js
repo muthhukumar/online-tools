@@ -38,8 +38,9 @@ const StackTree = ({ data }) => {
 
     const markAsCompleteHandler = id => {
         try {
-            const data = db.collection('stack').doc(id);
-            data.update({ completed: 'completed' })
+            const response = db.collection('stack').doc(id);
+            response
+                .update({ completed: 'completed' })
                 .then(() => {})
                 .catch(err => console.log(err));
         } catch (err) {}
@@ -47,9 +48,9 @@ const StackTree = ({ data }) => {
 
     const markAsIncompleteHandler = id => {
         try {
-            const db = firebase.firestore();
-            const data = db.collection('stack').doc(id);
-            data.update({ completed: 'not completed' })
+            const response = db.collection('stack').doc(id);
+            response
+                .update({ completed: 'not completed' })
                 .then(() => {})
                 .catch(err => console.log(err));
         } catch (err) {}
