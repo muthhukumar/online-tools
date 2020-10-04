@@ -1,6 +1,6 @@
 module.exports = {
     purge: {
-        enabled: false,
+        enabled: true,
         content: [
             './pages/**/*.js',
             './components/**/*.js',
