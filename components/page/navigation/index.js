@@ -12,7 +12,7 @@ const MainNavbar = () => {
     const pathName = useRouter().route;
     const route = pathName.substring(1, pathName.length);
     return (
-        <div className="items-center py-2 px-1 sm:w-full shadow-lg bg-white mx-auto md:w-11/12 flex justify-between border border-gray-200 rounded-lg">
+        <div className="mt-2 items-center py-2 px-1 sm:w-full shadow-lg bg-white mx-auto md:w-11/12 flex justify-between border border-gray-200 rounded-lg ">
             <div className="ml-2">
                 <Link href="/">
                     <a className="font-bold flex items-center inline-block text-5xl">

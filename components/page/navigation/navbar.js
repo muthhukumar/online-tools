@@ -13,6 +13,11 @@ const Navbar = () => {
                     <a className="w-full inline-block">Home</a>
                 </Link>
             </NavItem>
+            <NavItem highlight={route === 'ttyping'}>
+                <Link href="/ttyping">
+                    <a className="w-full inline-block">TypingPractise</a>
+                </Link>
+            </NavItem>
             <NavItem highlight={route === 'stacktree'}>
                 <Link href="/stacktree">
                     <a className="w-full inline-block">StackTree</a>

@@ -1,19 +1,87 @@
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+
 import Text from './text';
 import { useText } from './hooks/useText';
+import { useTimer } from './hooks/useTimer';
 
 const SampleText = ({ data }) => {
-    const [initial, input, setInput] = useText(data);
+    const [
+        targetWords,
+        newRandomWords,
+        input,
+        setInput,
+        lettersCount,
+        wordsCount,
+        resetText,
+    ] = useText(data);
+    const [seconds, minutes, startTimer, wps, resetTime] = useTimer(wordsCount);
 
     return (
-        <div className="w-11/12 mx-auto border border-gray-300 rounded-sm">
-            {initial.map(text => (
-                <Text content={text.content} key={text.id} />
-            ))}
-            <input
-                value={input}
-                onChange={setInput}
-                className="w-full border-gray-400 rounded-sm"
-            />
+        <div className="w-11/12 mx-auto rounded-sm shadow-lg flex-col rounded-lg">
+            <div className="bg-gray-100 px-2 py-3 text-lg flex justify-between text-gray-700">
+                <div className="flex items-center ">
+                    {minutes}m : {seconds % 60}s
+                    <button
+                        type="button"
+                        className="focus:outline-none ml-2"
+                        onClick={() => resetTime()}
+                    >
+                        <RotateLeftIcon fontSize="small" />
+                    </button>
+                </div>
+                <div> {wps} wps/min </div>
+            </div>
+            <div className="w-full flex flex-wrap p-2 border border-gray-300 mx-auto">
+                {targetWords.map(text => (
+                    <Text
+                        content={text.content}
+                        key={text.id}
+                        color={text.color}
+                    />
+                ))}
+            </div>
+            <div className="border px-4 py-2 border-gray-200">
+                <input
+                    value={input}
+                    onChange={e => {
+                        setInput(e);
+                        startTimer();
+                    }}
+                    className="w-full rounded-sm focus:outline-none"
+                />
+            </div>
+            <div className="flex items-center py-2 justify-between w-full bg-gray-100 text-gray-700">
+                <div className="flex justify-between">
+                    <div className="px-2 py-1 mx-2">{lettersCount} letters</div>
+                    <div className="px-2 py-1 mx-2">{wordsCount} words </div>
+                </div>
+                <div className="flex items-center">
+                    <button
+                        onClick={() => {
+                            resetText();
+                            resetTime();
+                        }}
+                        type="button"
+                        className="px-4 py-2 rounded-sm border border-red-400 text-red-400 mx-2 focus:outline-none hover:border-red-700 hover:text-red-700"
+                    >
+                        reset
+                    </button>
+                    <button
+                        onClick={() => newRandomWords()}
+                        type="button"
+                        className="px-4 py-2 rounded-sm border border-blue-400 text-blue-400 mx-2 focus:outline-none hover:border-blue-700 hover:text-blue-700"
+                    >
+                        shuffle
+                    </button>
+                    <button
+                        onClick={() => startTimer()}
+                        type="button"
+                        className="px-4 py-2 rounded-sm border border-green-400 text-green-400 mx-2 focus:outline-none hover:border-green-700 hover:text-green-700"
+                    >
+                        start timer
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

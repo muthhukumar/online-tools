@@ -1,10 +1,10 @@
 import SampleText from './sampleText';
-import randomData from '../../lib/genRandomText';
+import englishWords from '../../lib/englishWords';
 
 const Ttyping = () => {
     return (
-        <div className="pt-2 min-h-screen sm:w-full md:w-11/12 mx-auto">
-            <SampleText data={randomData} />
+        <div className="flex items-center justify-center pt-2 min-h-screen sm:w-full md:w-11/12 mx-auto">
+            <SampleText data={englishWords} />
         </div>
     );
 };
