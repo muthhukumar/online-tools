@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 import Text from './text';
@@ -15,6 +17,11 @@ const SampleText = ({ data }) => {
         resetText,
     ] = useText(data);
     const [seconds, minutes, startTimer, wps, resetTime] = useTimer(wordsCount);
+    const inputRef = useRef();
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
 
     return (
         <div className="w-11/12 mx-auto rounded-sm shadow-lg flex-col rounded-lg">
@@ -42,6 +49,7 @@ const SampleText = ({ data }) => {
             </div>
             <div className="border px-4 py-2 border-gray-200">
                 <input
+                    ref={inputRef}
                     value={input}
                     onChange={e => {
                         setInput(e);
