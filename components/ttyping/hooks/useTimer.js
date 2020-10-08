@@ -38,10 +38,8 @@ export const useTimer = (words = 0) => {
     }, [startTime]);
 
     useEffect(() => {
-        if (minutes === 0) setWps(words);
-        else {
-            setWps(Math.floor(words / minutes));
-        }
+        if (words === 0) return setWps(0);
+        setWps(Math.floor((words / seconds) * 60));
     }, [minutes, words]);
 
     return [seconds, minutes, startTimer, wps, reset];
