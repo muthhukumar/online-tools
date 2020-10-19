@@ -7,6 +7,7 @@ import { useText } from './hooks/useText';
 import { useTimer } from './hooks/useTimer';
 
 const SampleText = ({ data }) => {
+    const levelRef = useRef('hard');
     const [
         targetWords,
         newRandomWords,
@@ -15,7 +16,7 @@ const SampleText = ({ data }) => {
         lettersCount,
         wordsCount,
         resetText,
-    ] = useText(data);
+    ] = useText(data, levelRef.current.value);
     const [seconds, minutes, startTimer, wps, resetTime] = useTimer(wordsCount);
     const inputRef = useRef();
 
@@ -64,6 +65,17 @@ const SampleText = ({ data }) => {
                     <div className="px-2 py-1 mx-2">{wordsCount} words </div>
                 </div>
                 <div className="flex items-center">
+                    <select
+                        ref={levelRef}
+                        type="dropdown"
+                        className="px-4 border border-lg border-teal-600 focus:outline-none mx-2 py-2 text-teal-600 bg-gray-100"
+                    >
+                        <option value="easy">easy</option>
+                        <option value="medium">medium</option>
+                        <option value="hard" selected>
+                            hard
+                        </option>
+                    </select>
                     <button
                         onClick={() => {
                             resetText();

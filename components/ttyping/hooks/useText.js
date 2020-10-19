@@ -1,24 +1,30 @@
-import { useEffect, useState } from 'react';
-import { genRandomWords } from '../../../lib/words/index';
+import { useCallback, useEffect, useState } from 'react';
+import {
+    levelHelper,
+    filterWords,
+    genRandomWords,
+} from '../../../lib/words/index';
 
-export const useText = data => {
+export const useText = (data, size) => {
     const [input, setInputValue] = useState('');
-    const [randomWords, setRandomWords] = useState(genRandomWords(data));
+    const [randomWords, setRandomWords] = useState(
+        genRandomWords(filterWords(data, levelHelper(size)))
+    );
     const [index, setIndex] = useState(0);
     const [lettersCount, setLettersCount] = useState(0);
     const [wordsCount, setWordsCount] = useState(0);
 
-    const newRandomWords = () => {
-        setRandomWords(genRandomWords(data));
-    };
+    const newRandomWords = useCallback(() => {
+        setRandomWords(genRandomWords(filterWords(data, levelHelper(size))));
+    }, [size]);
 
-    const reset = () => {
+    const reset = useCallback(() => {
         setInputValue('');
-        setRandomWords(genRandomWords(data));
+        setRandomWords(genRandomWords(filterWords(data, levelHelper(size))));
         setIndex(0);
         setLettersCount(0);
         setWordsCount(0);
-    };
+    }, [size]);
 
     useEffect(() => {
         setRandomWords(state => {
